@@ -29,3 +29,37 @@ void insere(Tree **raiz, int info){
             ant->dir=CriaNo(info);
     }
 }
+
+Tree *busca(Tree *raiz,int info){
+    while(raiz != NULL && raiz->info!=info)
+        if(info<raiz->info)
+            raiz = raiz->esq;
+        else    
+            raiz = raiz->dir;
+    return raiz;
+}
+
+void pre_ordem(Tree *raiz){
+    if(raiz!=NULL){
+        printf("%d",raiz->info);
+        pre_ordem(raiz->dir);
+        pre_ordem(raiz->esq);
+    }
+}
+
+void in_ordem(Tree *raiz){
+    if(raiz!=NULL){
+        
+        in_ordem(raiz->esq);
+        printf("%d",raiz->info);
+        in_ordem(raiz->dir);
+    }
+}
+
+void pos_ordem(Tree *raiz){
+    if(raiz!=NULL){
+        pos_ordem(raiz->esq);
+        pos_ordem(raiz->dir);
+        printf("%d",raiz->info);
+    }
+}
